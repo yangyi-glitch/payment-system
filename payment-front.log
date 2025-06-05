@@ -1,0 +1,28 @@
+2025-06-04 15:50:45.337 [main] INFO  mav.shan.payment.PaymentFrontApplication - Starting PaymentFrontApplication using Java 1.8.0_161 on SHAN with PID 9724 (Z:\initTemplate\payment-system\payment-front\target\classes started by 山 in Z:\initTemplate\payment-system)
+2025-06-04 15:50:45.338 [main] INFO  mav.shan.payment.PaymentFrontApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 15:50:45.929 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 15:50:45.932 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 15:50:45.961 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-06-04 15:50:46.556 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2025-06-04 15:50:46.568 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-06-04 15:50:46.569 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 15:50:46.569 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 15:50:46.754 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 15:50:46.754 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1361 ms
+2025-06-04 15:50:49.067 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-06-04 15:50:49.103 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2025-06-04 15:50:49.117 [main] INFO  mav.shan.payment.PaymentFrontApplication - Started PaymentFrontApplication in 4.279 seconds (JVM running for 5.338)
+2025-06-04 20:03:47.764 [main] INFO  mav.shan.payment.PaymentFrontApplication - Starting PaymentFrontApplication using Java 1.8.0_202 on DESKTOP-91I8FJH with PID 10192 (D:\sort\java\code\payment-system\payment-front\target\classes started by 19659 in D:\sort\java\code\payment-system)
+2025-06-04 20:03:47.766 [main] INFO  mav.shan.payment.PaymentFrontApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 20:03:48.396 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 20:03:48.397 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 20:03:48.417 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-06-04 20:03:48.832 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2025-06-04 20:03:48.838 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-06-04 20:03:48.839 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 20:03:48.839 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 20:03:52.090 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 20:03:52.090 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4291 ms
+2025-06-04 20:03:53.168 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-06-04 20:03:53.183 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2025-06-04 20:03:53.191 [main] INFO  mav.shan.payment.PaymentFrontApplication - Started PaymentFrontApplication in 5.81 seconds (JVM running for 6.989)

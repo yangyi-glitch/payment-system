@@ -1,0 +1,95 @@
+2025-06-04 15:48:42.578 [main] INFO  mav.shan.payment.PaymentAdminApplication - Starting PaymentAdminApplication using Java 1.8.0_161 on SHAN with PID 9620 (Z:\initTemplate\payment-system\payment-admin\target\classes started by 山 in Z:\initTemplate\payment-system)
+2025-06-04 15:48:42.579 [main] INFO  mav.shan.payment.PaymentAdminApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 15:48:43.137 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 15:48:43.140 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 15:48:43.170 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-06-04 15:48:43.713 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2025-06-04 15:48:43.724 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:48:43.725 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 15:48:43.725 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 15:48:43.895 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 15:48:43.896 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1266 ms
+2025-06-04 15:48:46.239 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:48:46.276 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2025-06-04 15:48:46.286 [main] INFO  mav.shan.payment.PaymentAdminApplication - Started PaymentAdminApplication in 4.199 seconds (JVM running for 5.512)
+2025-06-04 15:49:07.129 [main] INFO  mav.shan.payment.PaymentFrontApplication - Starting PaymentFrontApplication using Java 1.8.0_161 on SHAN with PID 15172 (Z:\initTemplate\payment-system\payment-front\target\classes started by 山 in Z:\initTemplate\payment-system)
+2025-06-04 15:49:07.131 [main] INFO  mav.shan.payment.PaymentFrontApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 15:49:07.736 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 15:49:07.740 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 15:49:07.764 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-06-04 15:49:08.315 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2025-06-04 15:49:08.326 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:49:08.326 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 15:49:08.326 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 15:49:08.497 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 15:49:08.497 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1298 ms
+2025-06-04 15:49:10.661 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:49:10.671 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
+2025-06-04 15:49:10.703 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:49:10.704 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2025-06-04 15:49:10.708 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:49:10.708 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:49:10.713 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-06-04 15:49:10.734 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2025-06-04 15:49:25.419 [main] INFO  mav.shan.payment.PaymentFrontApplication - Starting PaymentFrontApplication using Java 1.8.0_161 on SHAN with PID 32 (Z:\initTemplate\payment-system\payment-front\target\classes started by 山 in Z:\initTemplate\payment-system)
+2025-06-04 15:49:25.421 [main] INFO  mav.shan.payment.PaymentFrontApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 15:49:26.029 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 15:49:26.032 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 15:49:26.058 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-06-04 15:49:26.634 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8082 (http)
+2025-06-04 15:49:26.644 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2025-06-04 15:49:26.645 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 15:49:26.645 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 15:49:26.816 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 15:49:26.816 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1342 ms
+2025-06-04 15:49:29.249 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2025-06-04 15:49:29.284 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8082 (http) with context path ''
+2025-06-04 15:49:29.294 [main] INFO  mav.shan.payment.PaymentFrontApplication - Started PaymentFrontApplication in 4.345 seconds (JVM running for 5.294)
+2025-06-04 15:50:43.482 [main] INFO  mav.shan.payment.PaymentAdminApplication - Starting PaymentAdminApplication using Java 1.8.0_161 on SHAN with PID 7260 (Z:\initTemplate\payment-system\payment-admin\target\classes started by 山 in Z:\initTemplate\payment-system)
+2025-06-04 15:50:43.484 [main] INFO  mav.shan.payment.PaymentAdminApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 15:50:44.219 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 15:50:44.223 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 15:50:44.256 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2025-06-04 15:50:44.953 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2025-06-04 15:50:44.967 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:50:44.968 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 15:50:44.968 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 15:50:45.166 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 15:50:45.166 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1615 ms
+2025-06-04 15:50:47.510 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-04 15:50:47.546 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2025-06-04 15:50:47.557 [main] INFO  mav.shan.payment.PaymentAdminApplication - Started PaymentAdminApplication in 4.621 seconds (JVM running for 5.655)
+2025-06-04 15:51:44.595 [http-nio-8081-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-04 15:51:44.595 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-04 15:51:44.595 [http-nio-8081-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-06-04 15:51:44.888 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-04 15:51:45.221 [http-nio-8081-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-04 20:03:41.118 [main] INFO  mav.shan.payment.PaymentAdminApplication - Starting PaymentAdminApplication using Java 1.8.0_202 on DESKTOP-91I8FJH with PID 18784 (D:\sort\java\code\payment-system\payment-admin\target\classes started by 19659 in D:\sort\java\code\payment-system)
+2025-06-04 20:03:41.120 [main] INFO  mav.shan.payment.PaymentAdminApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 20:03:41.703 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-04 20:03:41.706 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-04 20:03:41.727 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-06-04 20:03:42.189 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2025-06-04 20:03:42.196 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-04 20:03:42.197 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 20:03:42.197 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-06-04 20:03:42.319 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 20:03:42.319 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1158 ms
+2025-06-04 20:03:43.508 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-04 20:03:43.526 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2025-06-04 20:03:43.536 [main] INFO  mav.shan.payment.PaymentAdminApplication - Started PaymentAdminApplication in 2.887 seconds (JVM running for 4.191)

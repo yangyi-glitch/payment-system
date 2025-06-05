@@ -1,0 +1,21 @@
+# minio 配置
+minio:
+  endpoint: http://127.0.0.1:9000
+  accesskey: minioadmin
+  secretkey: minioadmin
+  bucket: localhost-file
+server:
+  port: 8082
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20000MB
+      max-request-size: 20000MB
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/local_file?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: shan
+    password: shan
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
