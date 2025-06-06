@@ -2,7 +2,7 @@
 <configuration debug="false">
 
     <!-- 定义日志存放根目录 -->
-    <property name="LOG_PATH" value="." />
+    <property name="LOG_PATH" value=".." />
 
     <property name="LOG_NAME" value="payment-front.log" />
 
