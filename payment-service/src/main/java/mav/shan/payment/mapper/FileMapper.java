@@ -17,4 +17,14 @@ public interface FileMapper extends BaseMapper<FileDTO> {
 
     @Select("SELECT count(*) FROM file")
     Long count();
+
+    default boolean insertFile(String filename, String url, String suffix, String wordUrl) {
+        FileDTO fileDTO = new FileDTO();
+        fileDTO.setFileName(filename.trim() + "." + suffix);
+        fileDTO.setFileUrl(url);
+        fileDTO.setFileType(suffix);
+        fileDTO.setWordUrl(wordUrl);
+        int insert = this.insert(fileDTO);
+        return insert > 0 ? true : false;
+    }
 }

@@ -22,7 +22,11 @@ public class FileDTO {
      */
     private String fileUrl;
     /**
-     * 文件url
+     * 文件类型
      */
     private String fileType;
+    /**
+     * word预览url
+     */
+    private String wordUrl;
 }

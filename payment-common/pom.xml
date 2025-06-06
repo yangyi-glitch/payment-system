@@ -70,6 +70,32 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.luhuiguo</groupId>
+            <artifactId>aspose-pdf</artifactId>
+            <version>23.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.luhuiguo</groupId>
+            <artifactId>aspose-words</artifactId>
+            <version>23.1</version>
+        </dependency>
+
+        <!--Excel-->
+        <dependency>
+            <groupId>com.luhuiguo</groupId>
+            <artifactId>aspose-cells</artifactId>
+            <version>22.10</version>
+        </dependency>
+
+        <!--Ppt-->
+        <dependency>
+            <groupId>com.luhuiguo</groupId>
+            <artifactId>aspose-slides</artifactId>
+            <version>23.1</version>
+        </dependency>
     </dependencies>
 
 </project>

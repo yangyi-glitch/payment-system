@@ -21,6 +21,7 @@
         <module>payment-service</module>
         <module>payment-front</module>
         <module>payment-common</module>
+        <module>payment-framework</module>
     </modules>
 
     <dependencies>
@@ -45,7 +46,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>4.9.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>8.5.6</version>
+            </dependency>
         </dependencies>
+
+
     </dependencyManagement>
 
     <build>

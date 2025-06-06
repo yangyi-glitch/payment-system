@@ -11,6 +11,7 @@
         <module name="payment-service" />
         <module name="payment-admin" />
         <module name="payment-common" />
+        <module name="payment-framework" />
       </profile>
     </annotationProcessing>
   </component>

@@ -3,10 +3,10 @@ package mav.shan.payment.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import entity.FileDTO;
 import mav.shan.payment.service.file.FileService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import utils.ResultUtils;
+import vo.req.FileReqVO;
 
 import javax.annotation.Resource;
 
@@ -20,8 +20,13 @@ public class FileController {
     private FileService fileService;
 
     @GetMapping("/list")
-    public ResultUtils list() {
-        Page<FileDTO> fileDTOPage = fileService.fileList();
+    public ResultUtils list(FileReqVO reqVO) {
+        Page<FileDTO> fileDTOPage = fileService.fileList(reqVO);
         return success(fileDTOPage);
+    }
+
+    @PostMapping("/upload")
+    public boolean upload(@RequestParam("file") MultipartFile file) {
+        return fileService.upload(file);
     }
 }
