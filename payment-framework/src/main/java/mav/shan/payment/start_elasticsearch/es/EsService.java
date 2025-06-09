@@ -1,5 +1,6 @@
 package mav.shan.payment.start_elasticsearch.es;
 
+import org.elasticsearch.client.indices.GetMappingsResponse;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 
 import java.util.List;
@@ -25,6 +26,13 @@ public interface EsService {
      * @return
      */
     Boolean exisIndexLibrary(String indexName);
+
+    /**
+     * 获取索引库映射
+     *
+     * @return
+     */
+    GetMappingsResponse getIndexMapping(String indexName);
 
     /**
      * 创建文档

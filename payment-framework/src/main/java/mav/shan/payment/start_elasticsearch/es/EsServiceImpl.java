@@ -12,6 +12,8 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.client.indices.GetMappingsRequest;
+import org.elasticsearch.client.indices.GetMappingsResponse;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
@@ -68,6 +70,18 @@ public class EsServiceImpl implements EsService {
             throw new RuntimeException(e);
         }
         return exists;
+    }
+
+    public GetMappingsResponse getIndexMapping(String indexName) {
+        //创建request对象
+        GetMappingsRequest request = new GetMappingsRequest();
+        request.indices(indexName);
+        try {
+            GetMappingsResponse mapping = restHighLevelClient.indices().getMapping(request, RequestOptions.DEFAULT);
+            return mapping;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Boolean createDocument(String str) {

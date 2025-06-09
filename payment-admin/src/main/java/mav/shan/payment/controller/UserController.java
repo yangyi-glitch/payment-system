@@ -14,6 +14,7 @@ import vo.req.LoginReqVO;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 import static utils.JwtUtils.getToken;
 import static utils.ResultUtils.success;
@@ -50,5 +51,10 @@ public class UserController {
     public ResultUtils<Boolean> createIndexLibrary() {
         userEsService.createIndexLibrary();
         return success(true);
+    }
+
+    @GetMapping("/esTest-1")
+    public ResultUtils<Map<String,Object>> getIndexMapping() {
+        return success(userEsService.getIndexMapping());
     }
 }
