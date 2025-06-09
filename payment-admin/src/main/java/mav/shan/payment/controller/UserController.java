@@ -2,6 +2,7 @@ package mav.shan.payment.controller;
 
 import entity.UserDTO;
 import excel.UserEcxelVO;
+import mav.shan.payment.es.useres.UserEsService;
 import mav.shan.payment.service.user.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private UserEsService userEsService;
+
     @GetMapping("/login")
     public ResultUtils<String> login(LoginReqVO reqVO) {
         UserDTO login = userService.login(reqVO);
@@ -40,5 +44,11 @@ public class UserController {
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
         EasyExcelUtils.write(response, "用户列表", UserEcxelVO.class, userService.list());
+    }
+
+    @GetMapping("/esTest")
+    public ResultUtils<Boolean> createIndexLibrary() {
+        userEsService.createIndexLibrary();
+        return success(true);
     }
 }
