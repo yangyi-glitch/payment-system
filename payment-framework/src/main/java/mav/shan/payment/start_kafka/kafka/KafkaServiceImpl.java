@@ -1,7 +1,7 @@
-package mav.shan.payment.springstartkafka.kafka;
+package mav.shan.payment.start_kafka.kafka;
 
 import lombok.extern.slf4j.Slf4j;
-import mav.shan.payment.springstartkafka.config.KafkaConfig;
+import mav.shan.payment.start_kafka.config.KafkaConfig;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.config.TopicConfig;

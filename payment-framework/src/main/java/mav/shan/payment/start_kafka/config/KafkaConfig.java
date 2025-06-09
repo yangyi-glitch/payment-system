@@ -1,4 +1,4 @@
-package mav.shan.payment.springstartkafka.config;
+package mav.shan.payment.start_kafka.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

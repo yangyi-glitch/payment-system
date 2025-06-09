@@ -1,4 +1,4 @@
-package mav.shan.payment.springstartminio.minio;
+package mav.shan.payment.start_minio.minio;
 
 import org.springframework.web.multipart.MultipartFile;
 

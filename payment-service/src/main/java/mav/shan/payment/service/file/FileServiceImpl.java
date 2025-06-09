@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import entity.FileDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.FileMapper;
-import mav.shan.payment.springstartminio.minio.MinioService;
+import mav.shan.payment.start_minio.minio.MinioService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import vo.req.FileReqVO;

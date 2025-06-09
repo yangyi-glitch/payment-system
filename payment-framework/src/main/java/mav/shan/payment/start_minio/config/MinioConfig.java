@@ -1,8 +1,7 @@
-package mav.shan.payment.springstartminio.config;
+package mav.shan.payment.start_minio.config;
 
 import io.minio.MinioClient;
 import lombok.Data;
-import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package mav.shan.payment.springstartkafka.kafka;
+package mav.shan.payment.start_kafka.kafka;
 
 public interface KafkaService {
     /**

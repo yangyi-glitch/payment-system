@@ -1,10 +1,10 @@
-package mav.shan.payment.springstartminio.minio;
+package mav.shan.payment.start_minio.minio;
 
 import cn.hutool.core.util.ObjectUtil;
 import io.minio.*;
 import io.minio.http.Method;
 import lombok.extern.slf4j.Slf4j;
-import mav.shan.payment.springstartminio.config.MinioConfig;
+import mav.shan.payment.start_minio.config.MinioConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

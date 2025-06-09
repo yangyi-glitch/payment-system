@@ -1,6 +1,6 @@
 package mav.shan.payment.es.useres;
 
-import mav.shan.payment.springstartelasticsearch.es.EsService;
+import mav.shan.payment.start_elasticsearch.es.EsService;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.stereotype.Service;

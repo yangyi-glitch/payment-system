@@ -1,4 +1,4 @@
-package mav.shan.payment.springstartelasticsearch.config;
+package mav.shan.payment.start_elasticsearch.config;
 
 
 import lombok.Data;

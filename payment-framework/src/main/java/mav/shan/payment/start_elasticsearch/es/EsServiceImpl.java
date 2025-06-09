@@ -1,4 +1,4 @@
-package mav.shan.payment.springstartelasticsearch.es;
+package mav.shan.payment.start_elasticsearch.es;
 
 
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
