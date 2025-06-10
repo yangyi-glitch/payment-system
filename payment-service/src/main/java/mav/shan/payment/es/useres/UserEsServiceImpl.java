@@ -1,15 +1,17 @@
 package mav.shan.payment.es.useres;
 
+import cn.hutool.core.bean.BeanUtil;
+import entity.UserDTO;
+import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.start_elasticsearch.es.EsService;
-import org.elasticsearch.client.indices.GetMappingsResponse;
-import org.elasticsearch.common.xcontent.XContentBuilder;
-import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.stereotype.Service;
+import vo.es.UserEsVO;
 
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.util.Map;
 
+import static constants.EsIndexNameConstant.USER_ES;
+
+@Slf4j
 @Service
 public class UserEsServiceImpl implements UserEsService {
     @Resource
@@ -17,39 +19,29 @@ public class UserEsServiceImpl implements UserEsService {
 
     @Override
     public Boolean createIndexLibrary() {
-        try {
-            Boolean aBoolean = esService.exisIndexLibrary("user");
-            if (!aBoolean) {
-                XContentBuilder mappingsBuilder = XContentFactory.jsonBuilder()
-                        .startObject()
-                        .startObject("properties")
-                        .startObject("custName")
-                        .field("type", "text")
-                        .endObject()
-                        .startObject("custAddress")
-                        .field("type", "keyword")
-                        .endObject()
-                        .endObject()
-                        .endObject();
-                esService.createIndexLibrary(mappingsBuilder, "user");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!esService.exisIndexLibrary(UserEsVO.class)) {
+            esService.createIndexLibrary(UserEsVO.class);
         }
         return true;
     }
 
     @Override
-    public Map<String, Object> getIndexMapping() {
-        try {
-            Boolean aBoolean = esService.exisIndexLibrary("user");
-            if (aBoolean) {
-                GetMappingsResponse mapping = esService.getIndexMapping("user");
-                return mapping.mappings().get("user").sourceAsMap();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public Boolean createDocument(UserDTO user) {
+        UserEsVO bean = BeanUtil.toBean(user, UserEsVO.class);
+        if (esService.exisIndexLibrary(UserEsVO.class)) {
+            esService.createDocument(USER_ES, bean);
         }
-        return null;
+        return true;
+    }
+
+    @Override
+    public UserDTO querDocument(Long userId) {
+        UserEsVO userEsVO = esService.querDocument(USER_ES, "userId", userId);
+        return BeanUtil.toBean(userEsVO, UserDTO.class);
+    }
+
+    @Override
+    public Boolean delIndexLibrary() {
+        return esService.delIndexLibrary(UserEsVO.class);
     }
 }

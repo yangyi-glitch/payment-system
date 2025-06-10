@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 
 import java.util.Objects;
 
+import static constants.RedisConstants.FILE_KEY_PREFIX;
 import static enums.ContentTypeEnums.getContentType;
 import static utils.FileUtils.*;
 import static utils.converter.PDFToWordConverter.escalateConvert_pdf;
@@ -105,5 +106,9 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, FileDTO> implements
             return fileDTO.getWordUrl();
         }
         return minioService.perviewUrl(fileDTO.getFileUrl());
+    }
+
+    private String formatKey(String key) {
+        return String.format(FILE_KEY_PREFIX, key);
     }
 }

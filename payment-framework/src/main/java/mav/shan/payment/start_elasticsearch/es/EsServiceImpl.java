@@ -1,20 +1,15 @@
 package mav.shan.payment.start_elasticsearch.es;
 
-
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.delete.DeleteRequest;
-import org.elasticsearch.action.get.GetRequest;
-import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.indices.CreateIndexRequest;
-import org.elasticsearch.client.indices.GetIndexRequest;
-import org.elasticsearch.client.indices.GetMappingsRequest;
-import org.elasticsearch.client.indices.GetMappingsResponse;
-import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -22,90 +17,96 @@ import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.core.IndexOperations;
+import org.springframework.data.elasticsearch.core.document.Document;
 import org.springframework.stereotype.Service;
+import vo.es.UserEsVO;
 
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @Service
 public class EsServiceImpl implements EsService {
 
     @Resource
     private RestHighLevelClient restHighLevelClient;
+    @Resource
+    private ElasticsearchRestTemplate restTemplate;
 
-    public Boolean createIndexLibrary(XContentBuilder mappingTemplate, String indexName) {
+    @Override
+    public Boolean createIndexLibrary(Class clazz) {
+        IndexOperations indexOperations = restTemplate.indexOps(clazz);
+        System.out.println(indexOperations.exists());
+        if (!indexOperations.exists()) {
+            indexOperations.create();
+            Document document = indexOperations.createMapping();
+            indexOperations.putMapping(document);
+            log.info("create index for LoginLog, document : {}", document);
+        } else {
+            log.info("index 已存在");
+        }
+        return true;
+    }
+
+    @Override
+    public Boolean delIndexLibrary(Class clazz) {
+        IndexOperations indexOperations = restTemplate.indexOps(clazz);
+        if (indexOperations.exists()) {
+            indexOperations.delete();
+            log.info("delete index for LoginLog");
+        } else {
+            log.info("index 不存在");
+        }
+        return true;
+    }
+
+    @Override
+    public Boolean exisIndexLibrary(Class clazz) {
+        IndexOperations indexOperations = restTemplate.indexOps(clazz);
+        return indexOperations.exists();
+    }
+
+    @Override
+    public <T> Boolean createDocument(String indexName, T data) {
+        // 将对象转为json
+        String str = JSON.toJSONString(data);
+        log.info("createDocument===>json: [{}]", str);
+        // 创建索引请求对象
+        IndexRequest indexRequest = new IndexRequest(indexName).source(str, XContentType.JSON);
+        // 执行增加文档
         try {
-            // Step 1: 创建 CreateIndexRequest 对象
-            CreateIndexRequest request = new CreateIndexRequest(indexName);
-            //创建request对象
-            request.source(mappingTemplate);
-            restHighLevelClient.indices().create(request, RequestOptions.DEFAULT);
+            restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return true;
     }
 
-    public Boolean delIndexLibrary(String indexName) {
-        //创建request对象
-        DeleteIndexRequest request = new DeleteIndexRequest(indexName);
-        //发送请求
+    @Override
+    public UserEsVO querDocument(String indexName, String field, Long id) {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(QueryBuilders.termQuery(field, id.toString()));
+        //设置查询索引
+        SearchRequest searchRequest = new SearchRequest(indexName);
+        searchRequest.source(searchSourceBuilder);
         try {
-            restHighLevelClient.indices().delete(request, RequestOptions.DEFAULT);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+            SearchHit[] hits = searchResponse.getHits().getHits();
+            if (hits != null && hits.length > 0) {
+                SearchHit searchHit = hits[0];
+                return JSON.parseObject(searchHit.getSourceAsString(), UserEsVO.class);
+            }
+        } catch (Exception e) {
+            log.error("查询消息失败！");
+            return null;
         }
-        return true;
-    }
-
-    public Boolean exisIndexLibrary(String indexName) {
-        //创建request对象
-        GetIndexRequest request = new GetIndexRequest(indexName);
-        //发送请求
-        boolean exists = false;
-        try {
-            exists = restHighLevelClient.indices().exists(request, RequestOptions.DEFAULT);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return exists;
-    }
-
-    public GetMappingsResponse getIndexMapping(String indexName) {
-        //创建request对象
-        GetMappingsRequest request = new GetMappingsRequest();
-        request.indices(indexName);
-        try {
-            GetMappingsResponse mapping = restHighLevelClient.indices().getMapping(request, RequestOptions.DEFAULT);
-            return mapping;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Boolean createDocument(String str) {
-
-        return true;
-    }
-
-    //    @ApiOperation("搜索文档")
-    public String querDocument(String id) {
-        //创建request对象
-        GetRequest request = new GetRequest("cust", id);
-        //发送请求
-        GetResponse response = null;
-        try {
-            response = restHighLevelClient.get(request, RequestOptions.DEFAULT);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        String josn = response.getSourceAsString();
-//        CustDTO custDTO = JSON.parseObject(josn, CustDTO.class);
         return null;
     }
 
-    //    @ApiOperation("更新文档")
+    @Override
     public Boolean updateDocument(String id, String name, String address) {
         //创建request对象
         UpdateRequest request = new UpdateRequest("cust", id);
@@ -122,7 +123,7 @@ public class EsServiceImpl implements EsService {
         return true;
     }
 
-    //    @ApiOperation("删除文档")
+    @Override
     public Boolean delDocument(String id) {
         //创建request对象
         DeleteRequest request = new DeleteRequest("cust", id);
@@ -135,7 +136,7 @@ public class EsServiceImpl implements EsService {
         return true;
     }
 
-    //    @ApiOperation("批量新增")
+    @Override
     public Boolean bulkDocument() {
 //        //创建request对象
 //        BulkRequest request = new BulkRequest();
@@ -149,7 +150,7 @@ public class EsServiceImpl implements EsService {
         return true;
     }
 
-    //    @ApiOperation("Match根据地址查询文档")
+    @Override
     public List<String> matchDocument(String address) {
         //创建request对象
         SearchRequest request = new SearchRequest("cust");
@@ -171,7 +172,7 @@ public class EsServiceImpl implements EsService {
         return null;
     }
 
-    //    @ApiOperation("叶子查询-MatchAll")
+    @Override
     public List<String> MatchAll() {
         //创建request对象
         SearchRequest request = new SearchRequest("cust");
@@ -192,7 +193,7 @@ public class EsServiceImpl implements EsService {
         return null;
     }
 
-    //    @ApiOperation("聚合查询-aggMatchAll")
+    @Override
     public List<String> aggMatchAll() {
         //创建request对象
         SearchRequest request = new SearchRequest("cust");
@@ -224,7 +225,7 @@ public class EsServiceImpl implements EsService {
         return null;
     }
 
-    //    @ApiOperation("叶子查询-MatchOther")
+    @Override
     public List<String> MatchOther() {
         //创建request对象
         SearchRequest request = new SearchRequest("cust");

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import entity.AreaDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.AreaMapper;
+import mav.shan.payment.start_redis.redis.RedisService;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -18,6 +19,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constants.RedisConstants.AREA_KEY_PREFIX;
+
 @Slf4j
 @Service
 public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements AreaService {
@@ -26,7 +29,7 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
     private AreaMapper areaMapper;
 
     @Resource
-    private StringRedisTemplate stringRedisTemplate;
+    private RedisService redisService;
 
     @Override
     public void create() {
@@ -49,7 +52,7 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
 
     @Override
     public List<AreaRespVO> treeList() {
-        String area = stringRedisTemplate.opsForValue().get("area");
+        String area = redisService.get(formatKey("area"));
         if (ObjectUtil.isNotEmpty(area)) {
             return JSONObject.parseArray(area, AreaRespVO.class);
         }
@@ -57,7 +60,7 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
                 .eq(AreaDTO::getType, 2)
                 .eq(AreaDTO::getParentId, 1));
         List<AreaRespVO> areaRespVOS = this.tree(switchBean(areaDTOS));
-        stringRedisTemplate.opsForValue().set("area", JSONObject.toJSONString(areaRespVOS));
+        redisService.set(formatKey("area"), JSONObject.toJSONString(areaRespVOS));
         return areaRespVOS;
     }
 
@@ -83,5 +86,9 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
             areaRespVOS.add(bean);
         }
         return areaRespVOS;
+    }
+
+    private String formatKey(String key) {
+        return String.format(AREA_KEY_PREFIX, key);
     }
 }

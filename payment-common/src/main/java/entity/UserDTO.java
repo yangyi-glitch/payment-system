@@ -17,5 +17,4 @@ public class UserDTO {
     private String created;
     private String lastModified;
     private String role;
-
 }
