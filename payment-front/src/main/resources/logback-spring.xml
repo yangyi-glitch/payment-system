@@ -2,7 +2,7 @@
 <configuration debug="false">
 
     <!-- 定义日志存放根目录 -->
-    <property name="LOG_PATH" value=".." />
+    <property name="LOG_PATH" value="../log" />
 
     <property name="LOG_NAME" value="payment-front.log" />
 
@@ -18,7 +18,7 @@
         <file>${LOG_PATH}/${LOG_NAME}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 每天生成一个日志文件 -->
-            <fileNamePattern>${LOG_NAME}/app.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/${LOG_NAME}/app.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <!-- 启动服务时，是否清理历史日志，一般不建议清理 -->
             <cleanHistoryOnStart>${LOGBACK_ROLLINGPOLICY_CLEAN_HISTORY_ON_START:-false}</cleanHistoryOnStart>
             <!-- 最多保留30天日志 -->

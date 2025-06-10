@@ -1,7 +1,7 @@
 package mav.shan.payment.start_elasticsearch.es;
 
-import org.elasticsearch.client.indices.GetMappingsResponse;
-import org.elasticsearch.common.xcontent.XContentBuilder;
+
+import vo.es.UserEsVO;
 
 import java.util.List;
 
@@ -11,36 +11,29 @@ public interface EsService {
      *
      * @return
      */
-    Boolean createIndexLibrary(XContentBuilder mappingTemplate, String indexName);
+    Boolean createIndexLibrary(Class clazz);
 
     /**
      * 删除索引库
      *
      * @return
      */
-    Boolean delIndexLibrary(String indexName);
+    Boolean delIndexLibrary(Class clazz);
 
     /**
      * 判断索引库是否存在
      *
      * @return
      */
-    Boolean exisIndexLibrary(String indexName);
-
-    /**
-     * 获取索引库映射
-     *
-     * @return
-     */
-    GetMappingsResponse getIndexMapping(String indexName);
+    Boolean exisIndexLibrary(Class clazz);
 
     /**
      * 创建文档
      *
-     * @param str
+     * @param T
      * @return
      */
-    Boolean createDocument(String str);
+    <T> Boolean createDocument(String indexName,T data);
 
     /**
      * 查询文档
@@ -48,7 +41,7 @@ public interface EsService {
      * @param id
      * @return
      */
-    String querDocument(String id);
+    UserEsVO querDocument(String indexName, String field, Long id);
 
     /**
      * 修改文档

@@ -1,4 +1,4 @@
-package mav.shan.payment.config;
+package mav.shan.payment.start_redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

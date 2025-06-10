@@ -10,6 +10,8 @@ import vo.req.LoginReqVO;
 
 import javax.annotation.Resource;
 
+import static constants.RedisConstants.USER_KEY_PREFIX;
+
 @Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDTO> implements UserService {
@@ -23,5 +25,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDTO> implements
                 .eq(UserDTO::getAccount, reqVO.getAccount())
                 .eq(UserDTO::getPassword, reqVO.getPassword()));
         return userDTO;
+    }
+
+    private String formatKey(String key) {
+        return String.format(USER_KEY_PREFIX, key);
     }
 }

@@ -1,0 +1,7 @@
+package constants;
+
+public interface RedisConstants {
+    String USER_KEY_PREFIX = "user_%s";
+    String AREA_KEY_PREFIX = "area_%s";
+    String FILE_KEY_PREFIX = "file_%s";
+}
