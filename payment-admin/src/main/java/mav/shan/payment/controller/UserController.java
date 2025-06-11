@@ -4,10 +4,7 @@ import entity.UserDTO;
 import excel.UserEcxelVO;
 import mav.shan.payment.es.useres.UserEsService;
 import mav.shan.payment.service.user.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.EasyExcelUtils;
 import utils.ResultUtils;
 import vo.req.LoginReqVO;
@@ -47,18 +44,18 @@ public class UserController {
         EasyExcelUtils.write(response, "用户列表", UserEcxelVO.class, userService.list());
     }
 
-    @GetMapping("/createIndexLibrary")
+    @PostMapping("/createIndexLibrary")
     public ResultUtils<Boolean> createIndexLibrary() {
         userEsService.createIndexLibrary();
         return success(true);
     }
 
     @PostMapping("/createDocument")
-    public ResultUtils<Boolean> createDocument() {
+    public ResultUtils<Boolean> createDocument(@RequestParam() Long userId) {
         UserDTO userDTO = new UserDTO();
-        userDTO.setUserId(10L);
+        userDTO.setUserId(userId);
         userDTO.setAccount("admin");
-        userDTO.setUsername("管理员");
+        userDTO.setUsername("管理员ABCD中国银行");
         userDTO.setPassword("<PASSWORD>");
         userDTO.setRole("1");
         userDTO.setEmail("<EMAIL>");
@@ -74,10 +71,35 @@ public class UserController {
         return success(true);
     }
 
-    @PostMapping("/getDocument")
-    public ResultUtils<UserDTO> getDocument() {
-        UserDTO userDTO = userEsService.querDocument(10L);
+    @GetMapping("/querDocumentByKeyWord")
+    public ResultUtils<UserDTO> querDocumentByKeyWord(@RequestParam("userId") Long userId) {
+        UserDTO userDTO = userEsService.querDocumentByKeyWord(userId);
         return success(userDTO);
     }
 
+    @GetMapping("/querDocumentByText")
+    public ResultUtils<List<UserDTO>> querDocumentByText(@RequestParam("fieldValue") String fieldValue) {
+        return success(userEsService.querDocumentByText(fieldValue));
+    }
+
+    @GetMapping("/matchAll")
+    public ResultUtils<List<UserDTO>> matchAll() {
+        List<UserDTO> userDTOS = userEsService.matchAll();
+        return success(userDTOS, Long.valueOf(userDTOS.size()));
+    }
+
+    @PostMapping("/updatateDocument")
+    public ResultUtils<Boolean> updatateDocument(@RequestParam("userId") Long userId) {
+        return success(userEsService.updatateDocument(userId));
+    }
+
+    @PostMapping("/delDocument")
+    public ResultUtils<Boolean> delDocument(@RequestParam("userId") Long userId) {
+        return success(userEsService.delDocument(userId));
+    }
+
+    @PostMapping("/bulkDocument")
+    public ResultUtils<Boolean> bulkDocument() {
+        return success(userEsService.bulkDocument());
+    }
 }

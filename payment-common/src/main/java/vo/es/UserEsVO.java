@@ -14,9 +14,9 @@ public class UserEsVO {
     @Id
     @Field(type = FieldType.Keyword)
     private Long userId;
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String account;
-    @Field(type = FieldType.Keyword)
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String username;
     @Field(type = FieldType.Keyword)
     private String password;
