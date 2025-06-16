@@ -27,7 +27,7 @@ public class AreaController {
     }
 
     @GetMapping("/list")
-    @Idempotent
+    @Idempotent(message = "请勿重复获取地区列表，滚蛋~")
     public ResultUtils list() {
         List<AreaRespVO> list = areaService.treeList();
         return success(list);
