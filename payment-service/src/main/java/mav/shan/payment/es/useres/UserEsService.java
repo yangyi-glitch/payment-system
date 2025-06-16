@@ -1,6 +1,6 @@
 package mav.shan.payment.es.useres;
 
-import entity.UserDTO;
+import mav.shan.common.entity.UserDTO;
 
 import java.util.List;
 

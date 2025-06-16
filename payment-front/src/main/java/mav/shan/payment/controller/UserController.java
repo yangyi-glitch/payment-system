@@ -1,21 +1,21 @@
 package mav.shan.payment.controller;
 
-import entity.UserDTO;
-import excel.UserEcxelVO;
+import mav.shan.common.entity.UserDTO;
+import mav.shan.common.excel.UserEcxelVO;
 import mav.shan.payment.service.user.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import utils.EasyExcelUtils;
-import utils.ResultUtils;
-import vo.req.LoginReqVO;
+import mav.shan.common.utils.EasyExcelUtils;
+import mav.shan.common.utils.ResultUtils;
+import mav.shan.common.vo.req.LoginReqVO;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static utils.JwtUtils.getToken;
-import static utils.ResultUtils.success;
+import static mav.shan.common.utils.JwtUtils.getToken;
+import static mav.shan.common.utils.ResultUtils.success;
 
 
 @RequestMapping("/user")

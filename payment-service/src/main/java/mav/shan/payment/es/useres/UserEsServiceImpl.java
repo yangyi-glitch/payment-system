@@ -3,18 +3,18 @@ package mav.shan.payment.es.useres;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSON;
-import entity.UserDTO;
+import mav.shan.common.entity.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.start_elasticsearch.es.EsService;
 import org.springframework.stereotype.Service;
-import vo.es.UserEsVO;
+import mav.shan.common.vo.es.UserEsVO;
 
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static constants.EsIndexNameConstant.USER_ES;
+import static mav.shan.common.constants.EsIndexNameConstant.USER_ES;
 
 @Slf4j
 @Service

@@ -2,7 +2,7 @@ package mav.shan.payment.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import entity.UserDTO;
+import mav.shan.common.entity.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -1,15 +1,15 @@
 package mav.shan.payment.interceptor;
 
-import entity.UserDTO;
+import mav.shan.common.entity.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import utils.ThreadLocalUtils;
+import mav.shan.common.utils.ThreadLocalUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static utils.JwtUtils.parseToken;
+import static mav.shan.common.utils.JwtUtils.parseToken;
 
 
 @Component

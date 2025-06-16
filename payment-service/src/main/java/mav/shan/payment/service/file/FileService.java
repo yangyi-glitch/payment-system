@@ -2,9 +2,9 @@ package mav.shan.payment.service.file;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import entity.FileDTO;
+import mav.shan.common.entity.FileDTO;
 import org.springframework.web.multipart.MultipartFile;
-import vo.req.FileReqVO;
+import mav.shan.common.vo.req.FileReqVO;
 
 
 public interface FileService extends IService<FileDTO> {

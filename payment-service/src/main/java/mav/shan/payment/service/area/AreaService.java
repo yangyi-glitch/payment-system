@@ -1,8 +1,8 @@
 package mav.shan.payment.service.area;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import entity.AreaDTO;
-import vo.resp.AreaRespVO;
+import mav.shan.common.entity.AreaDTO;
+import mav.shan.common.vo.resp.AreaRespVO;
 
 import java.util.List;
 

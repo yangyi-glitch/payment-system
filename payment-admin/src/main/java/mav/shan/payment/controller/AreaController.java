@@ -1,17 +1,18 @@
 package mav.shan.payment.controller;
 
+import mav.shan.common.annotation.Idempotent;
 import mav.shan.payment.service.area.AreaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import utils.ResultUtils;
-import vo.resp.AreaRespVO;
+import mav.shan.common.utils.ResultUtils;
+import mav.shan.common.vo.resp.AreaRespVO;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-import static utils.ResultUtils.success;
+import static mav.shan.common.utils.ResultUtils.success;
 
 @RequestMapping("/area")
 @RestController
@@ -26,6 +27,7 @@ public class AreaController {
     }
 
     @GetMapping("/list")
+    @Idempotent
     public ResultUtils list() {
         List<AreaRespVO> list = areaService.treeList();
         return success(list);

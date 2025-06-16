@@ -2,15 +2,15 @@ package mav.shan.payment.service.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import entity.UserDTO;
+import mav.shan.common.entity.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.UserMapper;
 import org.springframework.stereotype.Service;
-import vo.req.LoginReqVO;
+import mav.shan.common.vo.req.LoginReqVO;
 
 import javax.annotation.Resource;
 
-import static constants.RedisConstants.USER_KEY_PREFIX;
+import static mav.shan.common.constants.RedisConstants.USER_KEY_PREFIX;
 
 @Slf4j
 @Service

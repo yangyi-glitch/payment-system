@@ -4,14 +4,13 @@ import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import entity.AreaDTO;
+import mav.shan.common.entity.AreaDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.AreaMapper;
 import mav.shan.payment.start_redis.redis.RedisService;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import vo.resp.AreaRespVO;
+import mav.shan.common.vo.resp.AreaRespVO;
 
 import javax.annotation.Resource;
 import java.io.BufferedReader;
@@ -19,7 +18,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static constants.RedisConstants.AREA_KEY_PREFIX;
+import static mav.shan.common.constants.RedisConstants.AREA_KEY_PREFIX;
 
 @Slf4j
 @Service

@@ -4,23 +4,23 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import entity.FileDTO;
+import mav.shan.common.entity.FileDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.FileMapper;
 import mav.shan.payment.start_minio.minio.MinioService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import vo.req.FileReqVO;
+import mav.shan.common.vo.req.FileReqVO;
 
 import javax.annotation.Resource;
 
 import java.util.Objects;
 
-import static constants.RedisConstants.FILE_KEY_PREFIX;
-import static enums.ContentTypeEnums.getContentType;
-import static utils.FileUtils.*;
-import static utils.converter.PDFToWordConverter.escalateConvert_pdf;
-import static utils.converter.WordToPDFConverter.escalateConvert_word;
+import static mav.shan.common.constants.RedisConstants.FILE_KEY_PREFIX;
+import static mav.shan.common.enums.ContentTypeEnums.getContentType;
+import static mav.shan.common.utils.FileUtils.*;
+import static mav.shan.common.utils.converter.PDFToWordConverter.escalateConvert_pdf;
+import static mav.shan.common.utils.converter.WordToPDFConverter.escalateConvert_word;
 
 @Slf4j
 @Service
