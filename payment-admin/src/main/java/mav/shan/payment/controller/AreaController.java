@@ -1,6 +1,7 @@
 package mav.shan.payment.controller;
 
-import mav.shan.common.annotation.Idempotent;
+import mav.shan.payment.annotation.Idempotent;
+import mav.shan.payment.annotation.RateLimiter;
 import mav.shan.payment.service.area.AreaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,8 @@ public class AreaController {
     }
 
     @GetMapping("/list")
-    @Idempotent(message = "请勿重复获取地区列表，滚蛋~")
+//    @Idempotent(message = "请勿重复获取地区列表，滚蛋~")
+    @RateLimiter
     public ResultUtils list() {
         List<AreaRespVO> list = areaService.treeList();
         return success(list);

@@ -1,8 +1,8 @@
-package mav.shan.common.aop;
+package mav.shan.payment.aop;
 
 import cn.hutool.extra.spring.SpringUtil;
-import mav.shan.common.annotation.Idempotent;
 import lombok.extern.slf4j.Slf4j;
+import mav.shan.payment.annotation.Idempotent;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;

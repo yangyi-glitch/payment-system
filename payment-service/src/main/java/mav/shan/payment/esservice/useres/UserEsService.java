@@ -1,4 +1,4 @@
-package mav.shan.payment.es.useres;
+package mav.shan.payment.esservice.useres;
 
 import mav.shan.common.entity.UserDTO;
 
