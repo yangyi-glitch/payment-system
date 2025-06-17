@@ -4,6 +4,9 @@ import mav.shan.common.utils.designmode.observermode.observed.WeatherStation;
 import mav.shan.common.utils.designmode.observermode.observer.PhoneDisplay;
 import mav.shan.common.utils.designmode.observermode.observer.WebDisplay;
 
+/**
+ * @Description:观察者模式
+ */
 public class Main {
     public static void main(String[] args) {
         WeatherStation station = new WeatherStation();

@@ -5,7 +5,8 @@ import mav.shan.common.utils.designmode.singletonmode.hungry.Singleton_1;
 import mav.shan.common.utils.designmode.singletonmode.lazy.Singleton_2;
 
 /**
- * 单例模式还可以通过spring注解@Scope("singleton")
+ * @Description:单例模式
+ * 通过spring注解@Scope("singleton") 也可以实现单例模式
  */
 public class Main {
     public static void main(String[] args) {

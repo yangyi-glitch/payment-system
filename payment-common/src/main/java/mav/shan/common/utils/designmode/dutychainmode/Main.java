@@ -1,5 +1,8 @@
 package mav.shan.common.utils.designmode.dutychainmode;
 
+/**
+ * @Description:责任链模式
+ */
 public class Main {
     public static void main(String[] args) {
         // 构建审批链

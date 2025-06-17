@@ -1,4 +1,4 @@
-package mav.shan.common.utils.designmode.factorymode.methodfactory;
+package mav.shan.common.utils.designmode.factorymode;
 
 import mav.shan.common.utils.designmode.factorymode.methodfactory.factory.PaymentFactory;
 import mav.shan.common.utils.designmode.factorymode.methodfactory.factory.impl.AlipayFactory;
