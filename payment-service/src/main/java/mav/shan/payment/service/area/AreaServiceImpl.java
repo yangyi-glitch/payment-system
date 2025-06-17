@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import mav.shan.common.entity.AreaDTO;
 import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.AreaMapper;
+import mav.shan.payment.service.payment.PaymentSerivceImpl;
 import mav.shan.payment.start_redis.redis.RedisService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -30,6 +31,9 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
     @Resource
     private RedisService redisService;
 
+    @Resource
+    private PaymentSerivceImpl paymentSerivce;
+
     @Override
     public void create() {
         String filePath = "Z:/initTemplate/init/src/main/resources/area.txt";
@@ -51,6 +55,7 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
 
     @Override
     public List<AreaRespVO> treeList() {
+        paymentSerivce.executePayment(1000);
         String area = redisService.get(formatKey("area"));
         if (ObjectUtil.isNotEmpty(area)) {
             return JSONObject.parseArray(area, AreaRespVO.class);
