@@ -1,5 +1,6 @@
 package mav.shan.payment.controller;
 
+import mav.shan.common.custexception.BusinessException;
 import mav.shan.payment.annotation.Idempotent;
 import mav.shan.payment.annotation.RateLimiter;
 import mav.shan.payment.service.area.AreaService;
@@ -29,8 +30,11 @@ public class AreaController {
 
     @GetMapping("/list")
     @Idempotent(message = "请勿重复获取地区列表，滚蛋~")
-//    @RateLimiter
+    @RateLimiter(message = "请求太多了，滚蛋~")
     public ResultUtils list() {
+        if (true) {
+            throw new BusinessException("测试异常");
+        }
         List<AreaRespVO> list = areaService.treeList();
         return success(list);
     }
