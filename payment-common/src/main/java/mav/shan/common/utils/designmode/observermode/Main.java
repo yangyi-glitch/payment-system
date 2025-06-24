@@ -16,6 +16,6 @@ public class Main {
         new WebDisplay(station);
 
         // 更新数据，触发通知
-        station.setWeatherData("晴天 25°C");
+        station.setWeatherData("晴天 25°C", "1000");
     }
 }

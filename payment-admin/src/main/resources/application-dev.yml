@@ -1,0 +1,55 @@
+elasticsearch:
+  host: 127.0.0.1
+  port: 9200
+minio:
+  endpoint: http://127.0.0.1:9000
+  accesskey: minioadmin
+  secretkey: minioadmin
+  bucket: localhost-file
+user-1:
+  name: ZGSHAN
+  age: 25
+kafka:
+  bootstrap-servers: 127.0.0.1:9092
+  listener:
+#    设置消息确认模式为手动立即确认，即消费者需手动提交偏移量，且一旦收到消息就立即确认。
+    ack-mode: manual_immediate
+#    设置 Kafka 消费者的并发线程数为 1，表示同时只有一个线程拉取消息。
+    concurrency: 1
+#    如果监听的 Kafka 主题不存在，是否让应用启动失败。设置为 false 表示即使主题不存在也不会阻止应用启动。
+    missing-topics-fatal: false
+  producer:
+#    配置生产者发送消息时 key 的序列化类为字符串序列化器。
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    配置生产者发送消息时 value 的序列化类为字符串序列化器。
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    配置生产者发送消息时需要的副本确认数量。acks=1 表示 leader 分区写入成功即返回确认。
+    acks: 1
+  consumer:
+#    注释掉的配置项，用于指定消费者首次读取主题时从哪个位置开始消费。可选值有 earliest（从头开始）或 latest（从最新消息开始）。
+    #auto-offset-reset: earliest # latest
+#    是否自动提交偏移量。设为 false 表示关闭自动提交，通常配合手动确认使用以实现精确一次消费。
+    enable-auto-commit: false
+#    配置消费者接收消息时 key 的反序列化类为字符串反序列化器。
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    配置消费者接收消息时 value 的反序列化类为字符串反序列化器。
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+server:
+  port: 8081
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20000MB
+      max-request-size: 20000MB
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/lianxi?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  redis:
+    host: 127.0.0.1 # 地址
+    port: 6379 # 端口
+    database: 4 # 数据库索引
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志

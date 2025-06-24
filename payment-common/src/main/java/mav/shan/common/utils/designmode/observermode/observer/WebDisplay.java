@@ -10,8 +10,9 @@ public class WebDisplay implements Observer_1 {
         this.station = station;
         station.registerObserver(this);
     }
+
     @Override
-    public void update() {
-        System.out.println("Web Display: 当前天气数据是 -> " + station.getWeatherData());
+    public void update(String weatherData) {
+        System.out.println("Web Display: 当前天气数据是 -> " + station.getWeatherData() + "--->" + weatherData);
     }
 }
