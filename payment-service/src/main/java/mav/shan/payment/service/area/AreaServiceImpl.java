@@ -58,16 +58,24 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
 
     @Override
     public List<AreaRespVO> treeList() {
-        paymentSerivce.executePayment(1000);
-        String area = redisService.get(formatKey("area"));
-        if (ObjectUtil.isNotEmpty(area)) {
-            return JSONObject.parseArray(area, AreaRespVO.class);
+        try {
+            String area = redisService.get(formatKey("area"));
+            if (ObjectUtil.isNotEmpty(area)) {
+                return JSONObject.parseArray(area, AreaRespVO.class);
+            }
+        } catch (Exception e) {
+            log.error("redis异常", e);
         }
+
         List<AreaDTO> areaDTOS = areaMapper.selectList(new LambdaQueryWrapper<AreaDTO>()
                 .eq(AreaDTO::getType, 2)
                 .eq(AreaDTO::getParentId, 1));
         List<AreaRespVO> areaRespVOS = this.tree(switchBean(areaDTOS));
-        redisService.set(formatKey("area"), JSONObject.toJSONString(areaRespVOS));
+        try {
+            redisService.set(formatKey("area"), JSONObject.toJSONString(areaRespVOS));
+        } catch (Exception e) {
+            log.error("redis异常", e);
+        }
         return areaRespVOS;
     }
 
@@ -96,7 +104,7 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
     }
 
     @Async("taskExecutor")
-    public void async(){
+    public void async() {
         System.out.printf("执行async");
     }
 
