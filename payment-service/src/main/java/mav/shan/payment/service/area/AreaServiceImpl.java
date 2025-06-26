@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import mav.shan.payment.mapper.AreaMapper;
 import mav.shan.payment.service.payment.PaymentSerivceImpl;
 import mav.shan.payment.start_redis.redis.RedisService;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import mav.shan.common.vo.resp.AreaRespVO;
@@ -22,6 +24,7 @@ import java.util.List;
 import static mav.shan.common.constants.RedisConstants.AREA_KEY_PREFIX;
 
 @Slf4j
+@EnableAsync
 @Service
 public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements AreaService {
 
@@ -90,6 +93,11 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaDTO> implements
             areaRespVOS.add(bean);
         }
         return areaRespVOS;
+    }
+
+    @Async("taskExecutor")
+    public void async(){
+        System.out.printf("执行async");
     }
 
     private String formatKey(String key) {
