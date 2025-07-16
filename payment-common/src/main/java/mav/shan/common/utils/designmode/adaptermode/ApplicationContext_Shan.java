@@ -1,27 +1,29 @@
 package mav.shan.common.utils.designmode.adaptermode;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 @Data
+@Component
 public class ApplicationContext_Shan {
-    List<Pay> payList = new ArrayList<>();
+
+    @Autowired
+    private ApplicationContext applicationContext;
+    Collection<Pay> values = new ArrayList<>();
 
     public ApplicationContext_Shan() {
-        AliPay aliPay = new AliPay();
-        WxPay wxPay = new WxPay();
-        UnionPay unionPay = new UnionPay();
-        NetEasyPay netEasyPay = new NetEasyPay();
-        payList.add(aliPay);
-        payList.add(wxPay);
-        payList.add(unionPay);
-        payList.add(netEasyPay);
+        Map<String, Pay> beansOfType = applicationContext.getBeansOfType(Pay.class);
+        values = beansOfType.values();
     }
 
     public void pay(Object o) {
-        for (Pay pay : payList) {
+        for (Pay pay : values) {
             if (pay.support(o)){
                 pay.pay(100);
             }

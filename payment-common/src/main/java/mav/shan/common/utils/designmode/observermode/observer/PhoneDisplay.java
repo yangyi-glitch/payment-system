@@ -12,7 +12,7 @@ public class PhoneDisplay implements Observer_1 {
     }
 
     @Override
-    public void update() {
-        System.out.println("Phone Display: 天气数据已更新为 -> " + station.getWeatherData());
+    public void update(String weatherData) {
+        System.out.println("Phone Display: 天气数据已更新为 -> " + station.getWeatherData() + "--->" + weatherData);
     }
 }

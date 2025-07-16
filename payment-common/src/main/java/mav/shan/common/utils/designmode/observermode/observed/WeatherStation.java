@@ -10,9 +10,11 @@ public class WeatherStation implements Subject_1 {
 
     private List<Observer_1> observers = new ArrayList<>();
     private String weatherData;
+    String total;
 
-    public void setWeatherData(String data) {
+    public void setWeatherData(String data, String total) {
         this.weatherData = data;
+        this.total = total;
         notifyObservers();
     }
 
@@ -29,7 +31,7 @@ public class WeatherStation implements Subject_1 {
     @Override
     public void notifyObservers() {
         for (Observer_1 observer : observers) {
-            observer.update();
+            observer.update(this.total);
         }
     }
 
