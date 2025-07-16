@@ -4,7 +4,6 @@ public class ComputerBuilder {
     private Computer computer = new Computer();
 
     public static ComputerBuilder builder() {
-
         return new ComputerBuilder();
     }
 
