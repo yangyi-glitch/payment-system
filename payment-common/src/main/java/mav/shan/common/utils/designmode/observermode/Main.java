@@ -11,9 +11,11 @@ public class Main {
     public static void main(String[] args) {
         WeatherStation station = new WeatherStation();
 
+        station.registerObserver(new PhoneDisplay());
+        station.registerObserver(new WebDisplay());
         // 注册观察者
-        new PhoneDisplay(station);
-        new WebDisplay(station);
+//        new PhoneDisplay(station);
+//        new WebDisplay(station);
 
         // 更新数据，触发通知
         station.setWeatherData("晴天 25°C", "1000");

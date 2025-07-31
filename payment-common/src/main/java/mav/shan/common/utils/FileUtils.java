@@ -2,7 +2,10 @@ package mav.shan.common.utils;
 
 import cn.hutool.core.text.StrBuilder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,5 +47,25 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 将流转换为字符串
+     *
+     * @param inputStream
+     * @return
+     */
+    public static String streamTostring(InputStream inputStream) {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String str;
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            while ((str = bufferedReader.readLine()) != null) {
+                stringBuilder.append(str);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 }

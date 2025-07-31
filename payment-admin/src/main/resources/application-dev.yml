@@ -53,3 +53,15 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+# 微信小程序支付
+apppay:
+  appId: wx42380d6f1cd69149
+  appSecret: qLopb2wLscJqXK6z6gNijaR9aENyzPdr
+  serialNumber: 49FE2F2EBFECAF7AB0DFE804998709446BC843B0
+  mchId: 1704773052
+  domainName: https://api.mch.weixin.qq.com
+  wechatPayUrl: /v3/pay/transactions/jsapi
+  wechatPayCallbackUrl: http://panda.tianhuo.vip:8061/app-api/pay/ment-order/appletPayCallback
+  wechatRefundUrl: /v3/refund/domestic/refunds
+  wechatRefundCallbackUrl: http://panda.tianhuo.vip:8061/app-api/pay/refund-order/refundCallbackUrl
+  wechatRefundQueryUrl: /v3/refund/domestic/refunds/
