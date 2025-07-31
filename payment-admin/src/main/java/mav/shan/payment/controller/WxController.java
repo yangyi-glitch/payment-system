@@ -264,7 +264,7 @@ public class WxController {
     }
 
     private PrivateKey getPrivateKey() {
-        InputStream resourceAsStream = WxController.class.getResourceAsStream("/keyFiles" + "/" + active + "/apiclient_key.pem");
+        InputStream resourceAsStream = WxController.class.getResourceAsStream("/keyFiles/apiclient_key.pem");
         String privateContext = streamTostring(resourceAsStream);
         return PemUtil.loadPrivateKeyFromString(privateContext);
     }
